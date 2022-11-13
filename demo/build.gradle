@@ -1,11 +1,12 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
     compileSdk 33
     defaultConfig {
-        applicationId "com.solodroid.ads.sdkdemo"
+        applicationId "com.youra.ads.sdkdemo"
         minSdk 21
         targetSdk 33
         versionCode 1
@@ -38,4 +39,11 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-common-java8:2.3.1'
     implementation project(':library')
+
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:31.0.2')
+
+    ///
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-database:20.1.0'
 }

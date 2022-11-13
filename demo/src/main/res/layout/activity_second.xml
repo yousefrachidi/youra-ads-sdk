@@ -21,7 +21,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <com.solodroid.ads.sdk.ui.SmallNativeAdView
+        <com.youra.ads.sdk.ui.SmallNativeAdView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp" />
@@ -34,7 +34,7 @@
 
     </LinearLayout>
 
-    <com.solodroid.ads.sdk.ui.BannerAdView
+    <com.youra.ads.sdk.ui.BannerAdView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />

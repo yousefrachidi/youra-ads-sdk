@@ -26,7 +26,7 @@
             android:text="@string/btn_show_interstitial_ad"
             android:textAllCaps="false" />
 
-        <com.solodroid.ads.sdk.ui.MediumNativeAdView
+        <com.youra.ads.sdk.ui.MediumNativeAdView
             android:id="@+id/btn_medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
 
     </LinearLayout>
 
-    <com.solodroid.ads.sdk.ui.BannerAdView
+    <com.youra.ads.sdk.ui.BannerAdView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"/>

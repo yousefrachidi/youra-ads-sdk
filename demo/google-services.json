@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "371058526324",
+    "firebase_url": "https://demoads-a5b17-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "demoads-a5b17",
+    "storage_bucket": "demoads-a5b17.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371058526324:android:df7e3e32ea6ea16b812921",
+        "android_client_info": {
+          "package_name": "com.youra.ads.sdkdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371058526324-mc1giufc2vs78eb0gjlan2lqqmnnrin8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh6rvIhuyF2wlx3WUoPNwJl9yDrzW1kII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371058526324-mc1giufc2vs78eb0gjlan2lqqmnnrin8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
