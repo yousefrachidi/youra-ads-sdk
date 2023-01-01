@@ -13,8 +13,6 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     AdsManager adsManager ;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         adsManager.loadInterstitialAd();
         adsManager.loadNativeAd();
 
-
         findViewById(R.id.btn_interstitial).setOnClickListener(v -> {
             startActivity(new Intent(getApplicationContext(), SecondActivity.class));
             adsManager.showInterstitialAd();
@@ -38,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-
 
 
 

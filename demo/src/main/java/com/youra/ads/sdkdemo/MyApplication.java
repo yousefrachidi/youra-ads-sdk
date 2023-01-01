@@ -30,7 +30,7 @@ public class MyApplication extends Application implements ActivityLifecycleCallb
     private AppOpenAdMob appOpenAdMob;
     private AppOpenAdManager appOpenAdManager;
     Activity currentActivity;
-    private  AdsSharedPreferences sharedPreference;
+    private AdsSharedPreferences sharedPreference;
 
     public MyApplication() {
         mInstance = this;
@@ -105,12 +105,11 @@ public class MyApplication extends Application implements ActivityLifecycleCallb
     public void onActivityDestroyed(@NonNull Activity activity) {
     }
 
-    public void showAdIfAvailable(@NonNull Activity activity, @NonNull OnShowAdCompleteListener onShowAdCompleteListener, AdsSharedPreferences sharedPreferences) {
-        // We wrap the showAdIfAvailable to enforce that other classes only interact with MyApplication
-        if (sharedPreferences.getValueString(Ads.AD_NETWORK).equals(ADMOB)) {
-            appOpenAdMob.showAdIfAvailable(activity, Constant.ADMOB_APP_OPEN_AD_ID, onShowAdCompleteListener);
-        } else if (sharedPreferences.getValueString(Ads.AD_NETWORK).equals(GOOGLE_AD_MANAGER)) {
-            appOpenAdManager.showAdIfAvailable(activity, Constant.GOOGLE_AD_MANAGER_APP_OPEN_AD_ID, onShowAdCompleteListener);
+    public void showAdIfAvailable(@NonNull Activity activity, @NonNull OnShowAdCompleteListener onShowAdCompleteListener, AdsSharedPreferences prefe) {
+        if (prefe.getValueString(Ads.AD_NETWORK).equals(ADMOB)) {
+            appOpenAdMob.showAdIfAvailable(activity, prefe.getValueString(Ads.UnityCode.OPEN_ID.getCodeAdmob()), onShowAdCompleteListener);
+        } else if (prefe.getValueString(Ads.AD_NETWORK).equals(GOOGLE_AD_MANAGER)) {
+            appOpenAdManager.showAdIfAvailable(activity, prefe.getValueString(Ads.UnityCode.OPEN_ID.getCodeGAM()), onShowAdCompleteListener);
         }
     }
 

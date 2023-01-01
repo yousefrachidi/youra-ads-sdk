@@ -1,6 +1,10 @@
 package com.youra.ads.sdkdemo.utilis;
 
 import android.app.Activity;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.util.Log;
 
 import com.youra.ads.sdk.format.AdNetwork;
 import com.youra.ads.sdk.format.BannerAd;
@@ -37,17 +41,29 @@ public class AdsManager {
 
 
     public void initAds() {
+        setId(pref.getValueString(Ads.UnityCode.APP_ID.getCodeAdmob()));
         adNetwork = new AdNetwork.Initialize(activity)
                 .setAdStatus(pref.getValueString(Ads.AD_STATUS))
                 .setAdNetwork(pref.getValueString(Ads.AD_NETWORK))
                 .setBackupAdNetwork(pref.getValueString(Ads.BACKUP_AD_NETWORK))
-                .setAdMobAppId(pref.getValueString(Ads.UnityCode.APP_ID.getCodeFB()))
+                .setAdMobAppId(pref.getValueString(Ads.UnityCode.APP_ID.getCodeAdmob()))
                 .setStartappAppId(Constant.STARTAPP_APP_ID)
                 .setUnityGameId(Constant.UNITY_GAME_ID)
                 .setAppLovinSdkKey(activity.getResources().getString(R.string.applovin_sdk_key))
                 .setIronSourceAppKey(Constant.IRONSOURCE_APP_KEY)
                 .setDebug(BuildConfig.DEBUG)
                 .build();
+    }
+
+    private void setId(String id) {
+        try {
+            ApplicationInfo ai = activity.getPackageManager().getApplicationInfo(activity.getPackageName(), PackageManager.GET_META_DATA);
+            Bundle bundle = ai.metaData;
+            ai.metaData.putString("com.google.android.gms.ads.APPLICATION_ID", id);
+            String ApiKey = bundle.getString("com.google.android.gms.ads.APPLICATION_ID");
+            Log.d("setId", "getId: " + ApiKey);
+        } catch (PackageManager.NameNotFoundException | NullPointerException e) {
+        }
     }
 
     public void loadBannerAd() {

@@ -54,7 +54,7 @@ public class MediumNativeAdView extends LinearLayout {
     @SuppressLint("CustomViewStyleable")
     private void initView() {
         this.view = this;
-        inflate(mContext, R.layout.view_native_ad_medium, this);
+        inflate(mContext, R.layout.view_native_ad_medium_, this);
         TypedArray arr = mContext.obtainStyledAttributes(attrs, R.styleable.NativeAdView, styleAttr, 0);
 
         adMobDrawable = arr.getDrawable(R.styleable.NativeAdView_adMobNativeButton);

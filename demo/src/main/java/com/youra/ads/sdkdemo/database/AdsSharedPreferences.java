@@ -2,6 +2,7 @@ package com.youra.ads.sdkdemo.database;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.youra.ads.sdkdemo.utilis.Ads;
 
@@ -45,7 +46,16 @@ public class AdsSharedPreferences {
     }
 
     public void setValueString(String key, String value) {
+        Log.d("TAG", "setValueString: key: "+key+",  value: "+value );
         editor.putString(key, value).apply();
+    }
+
+    public int getValueInt(String key) {
+        return sharedPreferences.getInt(key, 0);
+    }
+
+    public void setValueInt(String key, Integer value) {
+        editor.putInt(key, value).apply();
     }
 
 

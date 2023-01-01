@@ -42,6 +42,7 @@ public class ActivitySplash extends AppCompatActivity {
         adsManager = new AdsManager(this);
         adsManager.initAds();
 
+
         if (sharedPreferences.getValueString(Ads.AD_NETWORK).equals(ADMOB)) {
             application = getApplication();
             ((MyApplication) application).showAdIfAvailable(ActivitySplash.this, this::createTimer,sharedPreferences);
@@ -62,6 +63,7 @@ public class ActivitySplash extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
+                        Log.d("TAG", "onCancelled: "+error.getMessage());
                     }
 
                 });
@@ -89,7 +91,11 @@ public class ActivitySplash extends AppCompatActivity {
 
         if (snapshot.hasChild(Ads.BACKUP_AD_NETWORK)) {
             sharedPreferences.setValueString(Ads.BACKUP_AD_NETWORK, getValue(snapshot, Ads.BACKUP_AD_NETWORK));
-         }
+        }
+
+        if (snapshot.hasChild(Ads.AD_INTERSTITIAL_INTERVAL)) {
+            sharedPreferences.setValueInt(Ads.AD_INTERSTITIAL_INTERVAL, Integer.parseInt( getValue(snapshot, Ads.AD_INTERSTITIAL_INTERVAL)));
+        }
 
         ////admob
         if (snapshot.hasChild(Ads.UnityCode.APP_ID.getCodeAdmob())) {
@@ -139,7 +145,6 @@ public class ActivitySplash extends AppCompatActivity {
 
 
     }
-
 
     public String getValue(DataSnapshot snapshot, String child) {
         Log.d("TAG", "feedData:  "+child+" "+Objects.requireNonNull(snapshot.child(child).getValue()).toString() );

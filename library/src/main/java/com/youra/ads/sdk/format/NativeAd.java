@@ -190,7 +190,7 @@ public class NativeAd {
                 startappNativeTitle = activity.findViewById(R.id.startapp_native_title);
                 startappNativeDescription = activity.findViewById(R.id.startapp_native_description);
                 startappNativeButton = activity.findViewById(R.id.startapp_native_button);
-                startappNativeButton.setOnClickListener(v -> startappNativeAd.performClick());
+//                startappNativeButton.setOnClickListener(v -> startappNativeAd.performClick());
                 startappNativeBackground = activity.findViewById(R.id.startapp_native_background);
                 applovinNativeAd = activity.findViewById(R.id.applovin_native_ad_container);
 
