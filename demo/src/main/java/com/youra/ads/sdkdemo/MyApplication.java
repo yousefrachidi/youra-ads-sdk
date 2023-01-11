@@ -29,7 +29,7 @@ public class MyApplication extends Application implements ActivityLifecycleCallb
     private static MyApplication mInstance;
     private AppOpenAdMob appOpenAdMob;
     private AppOpenAdManager appOpenAdManager;
-    Activity currentActivity;
+    private Activity currentActivity;
     private AdsSharedPreferences sharedPreference;
 
     public MyApplication() {
@@ -45,7 +45,6 @@ public class MyApplication extends Application implements ActivityLifecycleCallb
         appOpenAdMob = new AppOpenAdMob();
         appOpenAdManager = new AppOpenAdManager();
         sharedPreference = new AdsSharedPreferences(this);
-
     }
 
     @Override

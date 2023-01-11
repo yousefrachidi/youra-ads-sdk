@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         adsManager.loadBannerAd();
         adsManager.loadInterstitialAd();
         adsManager.loadNativeAd();
+        adsManager.loadNativeAd();
 
         findViewById(R.id.btn_interstitial).setOnClickListener(v -> {
             startActivity(new Intent(getApplicationContext(), SecondActivity.class));

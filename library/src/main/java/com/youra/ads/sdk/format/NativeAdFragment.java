@@ -81,7 +81,7 @@ public class NativeAdFragment {
         ImageView startappNativeIcon;
         TextView startappNativeTitle;
         TextView startappNativeDescription;
-        Button startappNativeButton;
+
         LinearLayout startappNativeBackground;
 
         FrameLayout applovinNativeAd;
@@ -196,8 +196,7 @@ public class NativeAdFragment {
                 startappNativeIcon = view.findViewById(R.id.startapp_native_icon);
                 startappNativeTitle = view.findViewById(R.id.startapp_native_title);
                 startappNativeDescription = view.findViewById(R.id.startapp_native_description);
-                startappNativeButton = view.findViewById(R.id.startapp_native_button);
-                startappNativeButton.setOnClickListener(v -> startappNativeAd.performClick());
+
                 startappNativeBackground = view.findViewById(R.id.startapp_native_background);
                 applovinNativeAd = view.findViewById(R.id.applovin_native_ad_container);
 
@@ -405,7 +404,6 @@ public class NativeAdFragment {
                                         startappNativeIcon.setImageBitmap(ad.getSecondaryImageBitmap());
                                         startappNativeTitle.setText(ad.getTitle());
                                         startappNativeDescription.setText(ad.getDescription());
-                                        startappNativeButton.setText(ad.isApp() ? "Install" : "Open");
                                         ad.registerViewForInteraction(startappNativeAd);
                                     }
 
@@ -504,8 +502,6 @@ public class NativeAdFragment {
                 startappNativeIcon = view.findViewById(R.id.startapp_native_icon);
                 startappNativeTitle = view.findViewById(R.id.startapp_native_title);
                 startappNativeDescription = view.findViewById(R.id.startapp_native_description);
-                startappNativeButton = view.findViewById(R.id.startapp_native_button);
-                startappNativeButton.setOnClickListener(v -> startappNativeAd.performClick());
                 startappNativeBackground = view.findViewById(R.id.startapp_native_background);
                 applovinNativeAd = view.findViewById(R.id.applovin_native_ad_container);
 
@@ -606,7 +602,6 @@ public class NativeAdFragment {
                                         startappNativeImage.setImageBitmap(ad.getImageBitmap());
                                         startappNativeTitle.setText(ad.getTitle());
                                         startappNativeDescription.setText(ad.getDescription());
-                                        startappNativeButton.setText(ad.isApp() ? "Install" : "Open");
                                         ad.registerViewForInteraction(startappNativeAd);
                                     }
 
