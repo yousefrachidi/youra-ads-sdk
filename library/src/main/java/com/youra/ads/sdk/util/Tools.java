@@ -34,8 +34,9 @@ public class Tools {
         return AdSize.MEDIUM_RECTANGLE;
     }
 
-    public static AdRequest getAdRequest(Activity activity, Boolean legacyGDPR) {
+    public static AdRequest getAdRequest(Activity activity, Boolean legacyGDPR, String token) {
         Bundle extras = new FacebookExtras().setNativeBanner(true).build();
+        extras.putString("bidder_token",token);
         if (legacyGDPR) {
             return new AdRequest.Builder()
                     .addNetworkExtrasBundle(AdMobAdapter.class, LegacyGDPR.getBundleAd(activity))

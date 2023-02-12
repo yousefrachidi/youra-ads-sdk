@@ -90,6 +90,12 @@ public class NativeAdViewHolder extends RecyclerView.ViewHolder {
     MaxNativeAdLoader nativeAdLoader;
     MaxAd maxNativeAd;
 
+    private String adToken = "";
+
+    public  void setAdToken(String token) {
+        this.adToken = token;
+    }
+
     public NativeAdViewHolder(View view) {
         super(view);
 
@@ -155,7 +161,7 @@ public class NativeAdViewHolder extends RecyclerView.ViewHolder {
                                         }
                                     })
                                     .build();
-                            adLoader.loadAd(Tools.getAdRequest((Activity) context, legacyGDPR));
+                            adLoader.loadAd(Tools.getAdRequest((Activity) context, legacyGDPR,adToken));
                         } else {
                             Log.d(TAG, "AdMob native ads has been loaded");
                         }
@@ -445,7 +451,7 @@ public class NativeAdViewHolder extends RecyclerView.ViewHolder {
                                         }
                                     })
                                     .build();
-                            adLoader.loadAd(Tools.getAdRequest((Activity) context, legacyGDPR));
+                            adLoader.loadAd(Tools.getAdRequest((Activity) context, legacyGDPR,adToken));
                         } else {
                             Log.d(TAG, "AdMob native ads has been loaded");
                         }

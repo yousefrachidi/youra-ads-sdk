@@ -85,6 +85,8 @@ public class InterstitialAd {
         private int placementStatus = 1;
         private int interval = 3;
 
+        private String adToken = "";
+
         private boolean legacyGDPR = false;
 
         public Builder(Activity activity) {
@@ -102,6 +104,11 @@ public class InterstitialAd {
 
         public Builder setAdStatus(String adStatus) {
             this.adStatus = adStatus;
+            return this;
+        }
+
+        public Builder setAdToken(String token) {
+            this.adToken = token;
             return this;
         }
 
@@ -175,7 +182,7 @@ public class InterstitialAd {
                 switch (adNetwork) {
                     case ADMOB:
                     case FAN_BIDDING_ADMOB:
-                        com.google.android.gms.ads.interstitial.InterstitialAd.load(activity, adMobInterstitialId, Tools.getAdRequest(activity, legacyGDPR), new InterstitialAdLoadCallback() {
+                        com.google.android.gms.ads.interstitial.InterstitialAd.load(activity, adMobInterstitialId, Tools.getAdRequest(activity, legacyGDPR,adToken), new InterstitialAdLoadCallback() {
                             @Override
                             public void onAdLoaded(@NonNull com.google.android.gms.ads.interstitial.InterstitialAd interstitialAd) {
                                 adMobInterstitialAd = interstitialAd;
@@ -448,7 +455,7 @@ public class InterstitialAd {
                 switch (backupAdNetwork) {
                     case ADMOB:
                     case FAN_BIDDING_ADMOB:
-                        com.google.android.gms.ads.interstitial.InterstitialAd.load(activity, adMobInterstitialId, Tools.getAdRequest(activity, legacyGDPR), new InterstitialAdLoadCallback() {
+                        com.google.android.gms.ads.interstitial.InterstitialAd.load(activity, adMobInterstitialId, Tools.getAdRequest(activity, legacyGDPR,adToken), new InterstitialAdLoadCallback() {
                             @Override
                             public void onAdLoaded(@NonNull com.google.android.gms.ads.interstitial.InterstitialAd interstitialAd) {
                                 adMobInterstitialAd = interstitialAd;

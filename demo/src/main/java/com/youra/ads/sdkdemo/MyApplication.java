@@ -32,6 +32,9 @@ public class MyApplication extends Application implements ActivityLifecycleCallb
     private Activity currentActivity;
     private AdsSharedPreferences sharedPreference;
 
+    String token = "EAATFdso7E74BAN6E5hBXxpm54u7fyWh1oLt7PXSAtXrSakjXKtkz82loQAEEZCZB1saZAXHIRwIgMkx75ZCkpfDceDx2WxEKTapZB4hsVFGZCDVgK7J5cKXmPYze6BW29roGrZBzqe8mFoZBMM0jjj1ARaTd7NlhB7dgjOqeNZBt60sIAGDiBheZBi";
+
+
     public MyApplication() {
         mInstance = this;
     }
@@ -61,7 +64,7 @@ public class MyApplication extends Application implements ActivityLifecycleCallb
     protected void onMoveToForeground() {
         // Show the ad (if available) when the app moves to foreground.
         if (sharedPreference.getValueString(Ads.AD_NETWORK).equals(ADMOB)) {
-            appOpenAdMob.showAdIfAvailable(currentActivity, Constant.ADMOB_APP_OPEN_AD_ID);
+            appOpenAdMob.showAdIfAvailable(currentActivity, Constant.ADMOB_APP_OPEN_AD_ID,token);
         } else if (sharedPreference.getValueString(Ads.AD_NETWORK).equals(GOOGLE_AD_MANAGER)) {
             appOpenAdManager.showAdIfAvailable(currentActivity, Constant.GOOGLE_AD_MANAGER_APP_OPEN_AD_ID);
         }
@@ -106,7 +109,7 @@ public class MyApplication extends Application implements ActivityLifecycleCallb
 
     public void showAdIfAvailable(@NonNull Activity activity, @NonNull OnShowAdCompleteListener onShowAdCompleteListener, AdsSharedPreferences prefe) {
         if (prefe.getValueString(Ads.AD_NETWORK).equals(ADMOB)) {
-            appOpenAdMob.showAdIfAvailable(activity, prefe.getValueString(Ads.UnityCode.OPEN_ID.getCodeAdmob()), onShowAdCompleteListener);
+            appOpenAdMob.showAdIfAvailable(activity, prefe.getValueString(Ads.UnityCode.OPEN_ID.getCodeAdmob()),token, onShowAdCompleteListener);
         } else if (prefe.getValueString(Ads.AD_NETWORK).equals(GOOGLE_AD_MANAGER)) {
             appOpenAdManager.showAdIfAvailable(activity, prefe.getValueString(Ads.UnityCode.OPEN_ID.getCodeGAM()), onShowAdCompleteListener);
         }

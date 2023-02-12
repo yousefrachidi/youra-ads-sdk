@@ -81,6 +81,13 @@ public class MediumRectangleAd {
         private boolean darkTheme = false;
         private boolean legacyGDPR = false;
 
+        private String adToken = "";
+
+        public Builder setAdToken(String token) {
+            this.adToken = token;
+            return this;
+        }
+
         public Builder(Activity activity) {
             this.activity = activity;
         }
@@ -172,7 +179,7 @@ public class MediumRectangleAd {
                             adContainerView.removeAllViews();
                             adContainerView.addView(adView);
                             adView.setAdSize(Tools.getAdSizeMREC());
-                            adView.loadAd(Tools.getAdRequest(activity, legacyGDPR));
+                            adView.loadAd(Tools.getAdRequest(activity, legacyGDPR,adToken));
                             adView.setAdListener(new AdListener() {
                                 @Override
                                 public void onAdLoaded() {
@@ -505,7 +512,7 @@ public class MediumRectangleAd {
                             adContainerView.removeAllViews();
                             adContainerView.addView(adView);
                             adView.setAdSize(Tools.getAdSizeMREC());
-                            adView.loadAd(Tools.getAdRequest(activity, legacyGDPR));
+                            adView.loadAd(Tools.getAdRequest(activity, legacyGDPR,adToken));
                             adView.setAdListener(new AdListener() {
                                 @Override
                                 public void onAdLoaded() {

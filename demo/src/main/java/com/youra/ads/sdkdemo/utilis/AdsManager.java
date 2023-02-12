@@ -79,7 +79,8 @@ public class AdsManager {
                 .setAppLovinBannerZoneId(Constant.APPLOVIN_BANNER_ZONE_ID)
                 .setIronSourceBannerId(Constant.IRONSOURCE_BANNER_ID)
                 .setDarkTheme(false)
-                .build();
+                .setAdToken(pref.getValueString(Ads.TOKEN_FAN))
+                .build()  ;
     }
 
     public void destroyBanner() {
@@ -99,6 +100,7 @@ public class AdsManager {
                 .setAppLovinInterstitialZoneId(Constant.APPLOVIN_INTERSTITIAL_ZONE_ID)
                 .setIronSourceInterstitialId(Constant.IRONSOURCE_INTERSTITIAL_ID)
                 .setInterval(1)
+                .setAdToken(pref.getValueString(Ads.TOKEN_FAN))
                 .build();
     }
 
@@ -117,6 +119,7 @@ public class AdsManager {
                 .setAppLovinNativeId(Constant.APPLOVIN_NATIVE_MANUAL_ID)
                 .setNativeAdStyle(Constant.STYLE_VIDEO_LARGE)
                 .setDarkTheme(false)
+                .setAdToken(pref.getValueString(Ads.TOKEN_FAN))
                 .build();
     }
 
@@ -133,6 +136,7 @@ public class AdsManager {
                 .setAppLovinBannerZoneId(Constant.APPLOVIN_BANNER_ZONE_ID)
                 .setIronSourceBannerId(Constant.IRONSOURCE_BANNER_ID)
                 .setDarkTheme(false)
+                .setAdToken(pref.getValueString(Ads.TOKEN_FAN))
                 .build();
     }
 
@@ -147,6 +151,7 @@ public class AdsManager {
                 .setFanNativeId(pref.getValueString(Ads.UnityCode.NATIVE_ID.getCodeFB()))
                 .setNativeAdStyle(Constant.STYLE_VIDEO_SMALL)
                 .setDarkTheme(false)
+                .setAdToken(pref.getValueString(Ads.TOKEN_FAN))
                 .build();
 
     }

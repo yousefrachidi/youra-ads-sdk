@@ -99,6 +99,14 @@ public class NativeAd {
 
         private String nativeAdStyle = "";
 
+        private String adToken = "";
+
+        public   Builder setAdToken(String token) {
+            this.adToken = token;
+            return this;
+        }
+
+
         public Builder(Activity activity) {
             this.activity = activity;
         }
@@ -223,7 +231,7 @@ public class NativeAd {
                                         }
                                     })
                                     .build();
-                            adLoader.loadAd(Tools.getAdRequest(activity, legacyGDPR));
+                            adLoader.loadAd(Tools.getAdRequest(activity, legacyGDPR,adToken));
                         } else {
                             Log.d(TAG, "AdMob Native Ad has been loaded");
                         }
@@ -532,7 +540,7 @@ public class NativeAd {
                                         }
                                     })
                                     .build();
-                            adLoader.loadAd(Tools.getAdRequest(activity, legacyGDPR));
+                            adLoader.loadAd(Tools.getAdRequest(activity, legacyGDPR,adToken));
                         } else {
                             Log.d(TAG, "AdMob Native Ad has been loaded");
                         }

@@ -67,6 +67,7 @@ public class BannerAd {
         private IronSourceBannerLayout ironSourceBannerLayout;
 
         private String adStatus = "";
+        private String adToken = "";
         private String adNetwork = "";
         private String backupAdNetwork = "";
         private String adMobBannerId = "";
@@ -92,6 +93,11 @@ public class BannerAd {
 
         public Builder setAdStatus(String adStatus) {
             this.adStatus = adStatus;
+            return this;
+        }
+
+        public Builder setAdToken(String token) {
+            this.adToken = token;
             return this;
         }
 
@@ -172,7 +178,7 @@ public class BannerAd {
                             adContainerView.removeAllViews();
                             adContainerView.addView(adView);
                             adView.setAdSize(Tools.getAdSize(activity));
-                            adView.loadAd(Tools.getAdRequest(activity, legacyGDPR));
+                            adView.loadAd(Tools.getAdRequest(activity, legacyGDPR,adToken));
                             adView.setAdListener(new AdListener() {
                                 @Override
                                 public void onAdLoaded() {
@@ -506,7 +512,7 @@ public class BannerAd {
                             adContainerView.removeAllViews();
                             adContainerView.addView(adView);
                             adView.setAdSize(Tools.getAdSize(activity));
-                            adView.loadAd(Tools.getAdRequest(activity, legacyGDPR));
+                            adView.loadAd(Tools.getAdRequest(activity, legacyGDPR,adToken));
                             adView.setAdListener(new AdListener() {
                                 @Override
                                 public void onAdLoaded() {

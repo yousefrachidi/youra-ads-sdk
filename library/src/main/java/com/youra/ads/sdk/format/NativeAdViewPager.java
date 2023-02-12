@@ -101,6 +101,14 @@ public class NativeAdViewPager {
         private boolean darkTheme = false;
         private boolean legacyGDPR = false;
 
+        private String adToken = "";
+
+        public Builder setAdToken(String token) {
+            this.adToken = token;
+            return this;
+        }
+
+
         public Builder(Activity activity, View view) {
             this.activity = activity;
             this.view = view;
@@ -216,7 +224,7 @@ public class NativeAdViewPager {
                                         }
                                     })
                                     .build();
-                            adLoader.loadAd(Tools.getAdRequest(activity, legacyGDPR));
+                            adLoader.loadAd(Tools.getAdRequest(activity, legacyGDPR,adToken));
                         } else {
                             Log.d(TAG, "AdMob Native Ad has been loaded");
                             progressBarAd.setVisibility(View.GONE);
@@ -516,7 +524,7 @@ public class NativeAdViewPager {
                                         }
                                     })
                                     .build();
-                            adLoader.loadAd(Tools.getAdRequest(activity, legacyGDPR));
+                            adLoader.loadAd(Tools.getAdRequest(activity, legacyGDPR,adToken));
                         } else {
                             Log.d(TAG, "AdMob Native Ad has been loaded");
                             progressBarAd.setVisibility(View.GONE);

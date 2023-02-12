@@ -7,6 +7,7 @@ public class Ads {
     public static String AD_NETWORK = "AD_NETWORK";
     public static String AD_STATUS = "AD_STATUS";
     public static String AD_TYPE = "AD_TYPE";
+    public static String TOKEN_FAN = "TOKEN_FAN";
     public static String BACKUP_AD_NETWORK = "BACKUP_AD_NETWORK";
 
     public static String AD_INTERSTITIAL_INTERVAL = "AD_INTERSTITIAL_INTERVAL";

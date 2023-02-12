@@ -2,10 +2,12 @@ package com.youra.ads.sdk.format;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
@@ -40,14 +42,16 @@ public class AppOpenAdMob {
      *
      * @param context the context of the activity that loads the ad
      */
-    public void loadAd(Context context, String adMobAppOpenAdUnitId) {
+    public void loadAd(Context context, String adMobAppOpenAdUnitId,String token) {
         // Do not load ad if there is an unused ad or one is already loading.
         if (isLoadingAd || isAdAvailable()) {
             return;
         }
 
         isLoadingAd = true;
-        AdRequest request = new AdRequest.Builder().build();
+        Bundle extras = new Bundle();
+        extras.putString("bidder_token", token);
+        AdRequest request = new AdRequest.Builder().addNetworkExtrasBundle(AdMobAdapter.class, extras).build();
         AppOpenAd.load(context, adMobAppOpenAdUnitId, request, AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT, new AppOpenAd.AppOpenAdLoadCallback() {
                     /**
                      * Called when an app open ad has loaded.
@@ -100,8 +104,8 @@ public class AppOpenAdMob {
      *
      * @param activity the activity that shows the app open ad
      */
-    public void showAdIfAvailable(@NonNull final Activity activity, String appOpenAdUnitId) {
-        showAdIfAvailable(activity, appOpenAdUnitId, () -> {
+    public void showAdIfAvailable(@NonNull final Activity activity, String appOpenAdUnitId,String token) {
+        showAdIfAvailable(activity, appOpenAdUnitId,token ,() -> {
             // Empty because the user will go back to the activity that shows the ad.
         });
     }
@@ -112,7 +116,7 @@ public class AppOpenAdMob {
      * @param activity                 the activity that shows the app open ad
      * @param onShowAdCompleteListener the listener to be notified when an app open ad is complete
      */
-    public void showAdIfAvailable(@NonNull final Activity activity, String appOpenAdUnitId, @NonNull OnShowAdCompleteListener onShowAdCompleteListener) {
+    public void showAdIfAvailable(@NonNull final Activity activity, String appOpenAdUnitId,String token, @NonNull OnShowAdCompleteListener onShowAdCompleteListener) {
         // If the app open ad is already showing, do not show the ad again.
         if (isShowingAd) {
             Log.d(LOG_TAG, "The app open ad is already showing.");
@@ -123,7 +127,7 @@ public class AppOpenAdMob {
         if (!isAdAvailable()) {
             Log.d(LOG_TAG, "The app open ad is not ready yet.");
             onShowAdCompleteListener.onShowAdComplete();
-            loadAd(activity, appOpenAdUnitId);
+            loadAd(activity, appOpenAdUnitId,token);
             return;
         }
 
@@ -140,7 +144,7 @@ public class AppOpenAdMob {
                 Log.d(LOG_TAG, "onAdDismissedFullScreenContent.");
 
                 onShowAdCompleteListener.onShowAdComplete();
-                loadAd(activity, appOpenAdUnitId);
+                loadAd(activity, appOpenAdUnitId,token);
             }
 
             /** Called when fullscreen content failed to show. */
@@ -150,7 +154,7 @@ public class AppOpenAdMob {
                 isShowingAd = false;
                 Log.d(LOG_TAG, "onAdFailedToShowFullScreenContent: " + adError.getMessage());
                 onShowAdCompleteListener.onShowAdComplete();
-                loadAd(activity, appOpenAdUnitId);
+                loadAd(activity, appOpenAdUnitId,token);
             }
 
             /** Called when fullscreen content is shown. */
